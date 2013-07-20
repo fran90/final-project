@@ -123,7 +123,7 @@ The k4 sofa table basically consists of three parts:
 </p>
 
 <p>
-were generated, as hollow cylinders in the straight sections and in the curved parts such as surfaces created with the plasm function: cubichermite.
+were generated as hollow cylinders in the straight sections and in the curved parts such as surfaces created with the plasm function: cubichermite.
 
 Also tubolar steel rectangle was created so, alternating cylinders and surfaces of Hermite following the natural shape of the model.
 
@@ -150,6 +150,106 @@ var ou = MAP(BEZIER(S2)([c2,c]))(domain);
 glass=STRUCT([model1,model2,ou])
 glass=COLOR(glass_color)(glass)
 </code></pre>
+
+
+<h2>
+<a name="S285 desk" class="anchor" href="#S285 desk"><span class="octicon octicon-link"></span></a>S285 desk</h2>
+
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/s285 desk.jpg">
+<div align="center"><em>S285 desk</em></div>
+</p>
+
+<p>
+This tubular steel desk is a successful example of the Bauhaus' programmatic claim of combining art and technology into a formal unit. The tabletop and storage elements made of varnished or stained wood harmonically fit in with the tubular steel design. The supporting frame consists of a single line; the wooden elements seem to float in it. The simple piece of furniture, which is formally balanced in its proportions, represents an expressive piece of contemporary history known as "The New Objectivity."
+</p>
+<p>
+S285 desk consists of:
+<br>
+-tubular steel supports
+<br>
+-drawers
+<br>
+-table
+<br>
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/desk.png">
+<div align="center"><em>S285 desk in plasm.js</em></div>
+</p>
+
+<p>
+The table and the drawers were generated with simple cuboids: the first one almost flat for the table and the second one with dimensions of 3x3x1 for the drawers.
+To model the steel support were used some cylinders (function cyl_surface in plasm.js and cylinder in pyplasm) and cubic surfaces of hermite (function cubichermite).
+<br>
+The following code shows how curved tubular pieces were created:
+</p>
+
+<pre><code>
+domain= PROD1x1([INTERVALS(1)(32),INTERVALS(1)(32)]);
+var c1 = CUBIC_HERMITE(S1)([[1,0,0],[0,0,-1],[0,0,-2],[-3,0,0]]);
+DRAW(MAP(c1)(INTERVALS(1)(14)));
+var c2 = CUBIC_HERMITE(S1)([[0.8,0,0],[0,0,-0.8],[0,0,-1.8],[-2.6,0,0]]);
+DRAW(MAP(c2)(INTERVALS(1)(14)));
+var sur = CUBIC_HERMITE(S2)([c1,c2,[0,-0.4,0],[0,0.4,0]]);
+var out = MAP(sur)(domain); //mezzo tubo
+DRAW(out);
+var sur2 = CUBIC_HERMITE(S2)([c1,c2,[0,0.4,0],[0,-0.4,0]]);
+var out2 = MAP(sur2)(domain); //mezzo tubo
+tubo=STRUCT([out,out2])
+DRAW(tubo)
+</code></pre>
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/curve and tube.png">
+<div align="center"><em>On the left curve c1 and c2, on the right surface out</em></div>
+</p>
+
+<p>
+The form of Hermite consists of two control points and two control tangents for each polynomial.
+In our case c1 and c2 are the two interpolated curves, from which we will create two half tubes complementary.
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/tube.png">
+<div align="center"><em>Struct of the two surface</em></div>
+</p>
+
+
+
+
+<h2>
+<a name="Long chair" class="anchor" href="#Long chair"><span class="octicon octicon-link"></span></a>Long chair</h2>
+
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/lounge chair.jpg">
+<div align="center"><em>Long chair</em></div>
+</p>
+
+<p>
+Long Chair by Marcel Breuer designed in 1936 is a classic in the history of interior design of the twentieth century. Inspired by the work of Alvar Aalto, the structure of the chaise longue is made of maple ply curved while the seat is made of bent plywood covered with polyurethane foam and upholstered in a wide range of cladding: aniline leather, full grain calf or printed, woven categories different or imitation leather.
+<br>
+The lounge chair is made up of:
+<br>
+-backrest
+<br>
+-armrests
+<br>
+-supports
+<br>
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/lounge2.png">
+<div align="center"><em>Long chair in plasm.js</em></div>
+</p>
+
+<p>
+For the realization of the chair were used Bezier curves from which were then generated surfaces.
+<br>
+Armrests, backrest and supports were modeled with the appropriate curves, breaking each component in 3-4 parts.
+</p>
+
+
+
 
 
 
