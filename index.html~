@@ -247,45 +247,105 @@ For the realization of the chair were used Bezier curves from which were then ge
 <br>
 Armrests, backrest and supports were modeled with the appropriate curves, breaking each component in 3-4 parts.
 </p>
+<p>
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/lounge.png">
+<div align="center"><em>Lounge chair</em></div>
+</p>
+<br>
+The following code illustrates the process to generate part of the backrest:
+</p>
+<pre><code>
+var domain = INTERVALS(1)(32);
+var domain2 = PROD1x1([INTERVALS(1)(16),INTERVALS(1)(16)]);
+var controlpoints =   [[0.31,0, -0.57],[0.70,0, -0.97] ,[0.05,0, -0.9],[0.92,0, -1.90]]; 
+var curveMapping = BEZIER(S0)(controlpoints);
+var curve = MAP(curveMapping)(domain);
+
+var controlpoints =   [[0.31,1.7, -0.57],[0.70,1.7, -0.97] ,[0.05,1.7, -0.9],[0.92,1.7, -1.90]]; 
+var curveMapping2 = BEZIER(S0)(controlpoints);
+var curve2 = MAP(curveMapping2)(domain);
+
+var controlpoints =   [[0.21,0, -0.57],[0.60,0, -0.97] ,[-0.05,0, -0.9],[0.82,0, -1.90]]; 
+var curveMapping11 = BEZIER(S0)(controlpoints);
+var curve11 = MAP(curveMapping11)(domain);
+
+var controlpoints =   [[0.21,1.7, -0.57],[0.60,1.7, -0.97] ,[-0.05,1.7, -0.9],[0.82,1.7, -1.90]]; 
+var curveMapping12 = BEZIER(S0)(controlpoints);
+var curve12 = MAP(curveMapping12)(domain);
+
+var out = MAP(BEZIER(S2)([curveMapping,curveMapping2]))(domain2);
+var outs = MAP(BEZIER(S2)([curveMapping11,curveMapping12]))(domain2);
+var outp = MAP(BEZIER(S2)([curveMapping,curveMapping11]))(domain2);
+var outp6 = MAP(BEZIER(S2)([curveMapping2,curveMapping12]))(domain2);
+DRAW(STRUCT([out,outs,outp,outp6]))
+</code></pre>
+<p>
+So were created four "twin" curves which were then interpolated in pairs to generate the desired surfaces.
+</p>
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/sezione schienale.png">
+<div align="center"><em>Section of backrest</em></div>
+</p>
+
+
+
+
+<h2>
+<a name="Wassily chair" class="anchor" href="#Wassily chair"><span class="octicon octicon-link"></span></a>Wassily chair</h2>
+
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassily chair.jpg">
+<div align="center"><em>Wassily chair</em></div>
+</p>
+
+<p>
+The Wassily Chair, also known as the Model B3 chair, was designed by Marcel Breuer in 1925-1926 while he was the head of the cabinet-making workshop at the Bauhaus, in Dessau, Germany. Despite popular belief, the chair was not designed for the non-objective painter Wassily Kandinsky, who was concurrently on the Bauhaus faculty. However, Kandinsky had admired the completed design, and Breuer fabricated a duplicate for Kandinsky's personal quarters.
+This chair was revolutionary in the use of the materials (bent tubular steel and canvas) and methods of manufacturing. It is said that the handlebar of Breuer's 'Adler' bicycle inspired him to use steel tubing to build the chair, and it proved to be an appropriate material because it was available in quantity. The design (and all subsequent steel tubing furniture) was technologically feasible only because the German steel manufacturer Mannesmann had recently perfected a process for making seamless steel tubing. Previously, steel tubing had a welded seam, which would collapse when the tubing was bent.
+</p>
+
+<p>
+<br>
+The chair consists of:
+<br>
+-steel tubes
+<br>
+-black leather stripes
+<br>
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassily3.png">
+<div align="center"><em>Wassily chair in plasm.js</em></div>
+</p>
+
+<p>
+Steel tubes were realized with some cylinders where there were straight sections and with cubichermite where there were curved sections.
+Leather stripes were realized with some cuboids.
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassilly2.png">
+<div align="center"><em>Wassily chair in plasm.js</em></div>
+</p>
 
 
 
 
 
+<hr><h1>
+<a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer</h1>
+
+<p>All the original furniture images, their description and the informations about Breuer life and work, are taken from <a href="http://en.wikipedia.org/wiki/Marcel_Breuer">wikipedia,</a><a href="http://www.marcelbreuer.org">marcelbreuer.org,</a> 
+<a href="www.bauhaus2yourhouse.com">bauhaus2yourhose.com,</a>
+<a href="www.design-museum.de">design-museum.de,</a>
+<a href="www.aroots.org">aroots.org,</a>
+
+</p>
+
+<hr>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/fran90">fran90</a></p>
