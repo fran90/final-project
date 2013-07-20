@@ -103,9 +103,65 @@ He also applied the same principals used in his tubular steel pieces to plywood 
 <img src="https://raw.github.com/fran90/final-project/gh-pages/images/k40 sofa table.jpg">
 </a>
 <div align="center"><em>K40 sofa table </em></div></p>
-<p>  K40 table was designed between 1927 and 1928. It utilizes the same shapes and forms commonly seen throughout other Breuer tables. The Breuer K40 Sofa table is one of Breuer's most elegant table designs. Breuer was a pioneer, and quickly became a master, at using tubular steel. The K40 table is a fine example of Breuer's ability to bend tubular steel into a useful object for the home.   
-
+<p>  K40 sofa table was designed between 1927 and 1928. It utilizes the same shapes and forms commonly seen throughout other Breuer tables. The Breuer K40 Sofa table is one of Breuer's most elegant table designs. Breuer was a pioneer, and quickly became a master, at using tubular steel. The K40 table is a fine example of Breuer's ability to bend tubular steel into a useful object for the home.   
 </p>
+
+<p>
+The k4 sofa table basically consists of three parts:
+<br>
+-tubular steel supports
+<br>
+-tubular steel rectangle
+<br>
+-circular glass plane
+<br>
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/sofa k40.png">
+<div align="center"><em>K40 sofa table in plasm.js</em></div>
+</p>
+
+<p>
+were generated, as hollow cylinders in the straight sections and in the curved parts such as surfaces created with the plasm function: cubichermite.
+
+Also tubolar steel rectangle was created so, alternating cylinders and surfaces of Hermite following the natural shape of the model.
+
+Circular glass plane was modeled by generating two neighboring discs and coloring of glass, giving it an appropriate transparency.
+To create the fill between the two disks were made ​​two circles between which was generated a surface of bezier, thus making the model slightly lighter than a solid.
+</p>
+
+
+<pre><code>
+function circl (sel) {
+return function (r) {
+return function (d_z) {
+return function (p) {
+return [ r * COS(sel(p)), r * SIN(sel(p)), d_z ];
+}; }; }; };
+
+glass_color = [185/256,211/256,238/256,0.6];
+var model1 = DISK(4.6)([64,4]);
+var model2=T([3])([0.2])(model1)
+var c = circl(S1)(4.6)(0);
+var c2 = circl(S1)(4.6)(0.2);
+var domain = PROD1x1([INTERVALS(2*PI)(32),INTERVALS(1)(1)]);
+var ou = MAP(BEZIER(S2)([c2,c]))(domain);
+glass=STRUCT([model1,model2,ou])
+glass=COLOR(glass_color)(glass)
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
