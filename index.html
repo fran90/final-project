@@ -247,13 +247,86 @@ For the realization of the chair were used Bezier curves from which were then ge
 <br>
 Armrests, backrest and supports were modeled with the appropriate curves, breaking each component in 3-4 parts.
 </p>
+<p>
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/lounge.png">
+<div align="center"><em>Lounge chair</em></div>
+</p>
+<br>
+The following code illustrates the process to generate part of the backrest:
+</p>
+<pre><code>
+var domain = INTERVALS(1)(32);
+var domain2 = PROD1x1([INTERVALS(1)(16),INTERVALS(1)(16)]);
+var controlpoints =   [[0.31,0, -0.57],[0.70,0, -0.97] ,[0.05,0, -0.9],[0.92,0, -1.90]]; 
+var curveMapping = BEZIER(S0)(controlpoints);
+var curve = MAP(curveMapping)(domain);
+
+var controlpoints =   [[0.31,1.7, -0.57],[0.70,1.7, -0.97] ,[0.05,1.7, -0.9],[0.92,1.7, -1.90]]; 
+var curveMapping2 = BEZIER(S0)(controlpoints);
+var curve2 = MAP(curveMapping2)(domain);
+
+var controlpoints =   [[0.21,0, -0.57],[0.60,0, -0.97] ,[-0.05,0, -0.9],[0.82,0, -1.90]]; 
+var curveMapping11 = BEZIER(S0)(controlpoints);
+var curve11 = MAP(curveMapping11)(domain);
+
+var controlpoints =   [[0.21,1.7, -0.57],[0.60,1.7, -0.97] ,[-0.05,1.7, -0.9],[0.82,1.7, -1.90]]; 
+var curveMapping12 = BEZIER(S0)(controlpoints);
+var curve12 = MAP(curveMapping12)(domain);
+
+var out = MAP(BEZIER(S2)([curveMapping,curveMapping2]))(domain2);
+var outs = MAP(BEZIER(S2)([curveMapping11,curveMapping12]))(domain2);
+var outp = MAP(BEZIER(S2)([curveMapping,curveMapping11]))(domain2);
+var outp6 = MAP(BEZIER(S2)([curveMapping2,curveMapping12]))(domain2);
+DRAW(STRUCT([out,outs,outp,outp6]))
+</code></pre>
+<p>
+So were created four "twin" curves which were then interpolated in pairs to generate the desired surfaces.
+</p>
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/sezione schienale.png">
+<div align="center"><em>Section of backrest</em></div>
+</p>
 
 
 
 
+<h2>
+<a name="Wassily chair" class="anchor" href="#Wassily chair"><span class="octicon octicon-link"></span></a>Wassily chair</h2>
 
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassily chair.jpg">
+<div align="center"><em>Wassily chair</em></div>
+</p>
 
+<p>
+The Wassily Chair, also known as the Model B3 chair, was designed by Marcel Breuer in 1925-1926 while he was the head of the cabinet-making workshop at the Bauhaus, in Dessau, Germany. Despite popular belief, the chair was not designed for the non-objective painter Wassily Kandinsky, who was concurrently on the Bauhaus faculty. However, Kandinsky had admired the completed design, and Breuer fabricated a duplicate for Kandinsky's personal quarters.
+This chair was revolutionary in the use of the materials (bent tubular steel and canvas) and methods of manufacturing. It is said that the handlebar of Breuer's 'Adler' bicycle inspired him to use steel tubing to build the chair, and it proved to be an appropriate material because it was available in quantity. The design (and all subsequent steel tubing furniture) was technologically feasible only because the German steel manufacturer Mannesmann had recently perfected a process for making seamless steel tubing. Previously, steel tubing had a welded seam, which would collapse when the tubing was bent.
+</p>
 
+<p>
+<br>
+The chair consists of:
+<br>
+-steel tubes
+<br>
+-black leather stripes
+<br>
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassily3.png">
+<div align="center"><em>Wassily chair in plasm.js</em></div>
+</p>
+
+<p>
+Steel tubes were realized with some cylinders where there were straight sections and with cubichermite where there were curved sections.
+Leather stripes were realized with some cuboids.
+</p>
+
+<p>
+<img src="https://raw.github.com/fran90/final-project/gh-pages/images/wassily2.png">
+<div align="center"><em>Wassily chair in plasm.js</em></div>
+</p>
 
 
 
